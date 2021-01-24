@@ -1,23 +1,29 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter, Switch, Router, Route } from "react-router-dom";
 import { GlobalStyle } from './globalStyles';
 import Hero from './components/Hero';
 import Products from './components/Products';
 import { productData, productDataTwo } from './components/Products/data';
 import Feature from './components/Feature';
 import Footer from './components/Footer';
+import SignUp from './components/SignUp/Signup';
+import Login  from './components/Login/Login';
+import LandingPage from './components/LandingPage/LandingPage';
 
-function App() {
+class App extends React.Component{
+  render(){
   return (
-    <Router>
-      <GlobalStyle />
-      <Hero />
-      <Products heading='Choose your favorite' data={productData} />
-      <Feature />
-      <Products heading='Sweet Treats for You' data={productDataTwo} />
-      <Footer />
-    </Router>
+    <BrowserRouter>
+        <div className="App">
+          <Switch>
+            <Route exact path="/Login" component = {Login}></Route>
+            <Route exact path="/SignUp" component = {SignUp}></Route>
+            <Route exact path="/" component = {LandingPage}></Route>
+          </Switch>
+        </div>
+      </BrowserRouter>
   );
+    }
 }
 
 export default App;
